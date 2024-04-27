@@ -1,4 +1,6 @@
 package com.movies.demo.infraestructure.repositories;
 
-public interface JpaMovieRepositoryAdapter {
+import com.movies.demo.domain.usecase.out.MovieRepositoryPort;
+
+public interface JpaMovieRepositoryAdapter implements MovieRepositoryPort {
 }

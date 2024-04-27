@@ -6,11 +6,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class MovieEntity {
 
     @Id
@@ -27,8 +28,17 @@ public class MovieEntity {
 
     private Categories categorias;
 
+    public MovieEntity(int id, String titulo, String descripcion, int duracion, int puntuacion, Categories categorias) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.puntuacion =puntuacion;
+        this.categorias = categorias;
+    }
+
     public static MovieEntity fromDomainModel(Movies movie){
-        return new MovieEntity(movie.getId(), movie.getTitulo(), movie.getDescripcion(), movie.getDuracion());
+        return new MovieEntity(movie.getId(), movie.getTitulo(), movie.getDescripcion(), movie.getDuracion(),
+                movie.getPuntuacion(), movie.getCategorias());
     }
 
 }
